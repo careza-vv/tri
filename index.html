@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My girlies</title>
 
+<style>
+body{
+    background:#e6e6fa;
+    font-family: Georgia, serif;
+    margin:0;
+    text-align:center;
+}
+
+#cover{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.letter{
+    background:white;
+    padding:40px 60px;
+    border-radius:6px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    font-size:28px;
+}
+
+.container{
+    display:none;
+    max-width:600px;
+    margin:0 auto;
+    padding-top:80px;
+}
+
+.top-image{
+    width:220px;
+    display:block;
+    margin:0 auto 20px auto;
+    cursor:pointer;
+}
+
+#text{
+    font-size:18px;
+    line-height:1.8;
+    white-space:pre-line;
+}
+</style>
+</head>
+
+<body>
+
+<div id="cover">
+<div class="letter">
+To my girlies
+</div>
+</div>
+
+<div class="container" id="main">
+
+<img id="topImage"
+     src="received_944139307982434.jpeg"
+     class="top-image"
+     onclick="changeImage()">
+
+<div id="text"></div>
+
+</div>
+
+<audio id="music" loop>
+<source src="The Ridleys - Someday (Lyrics).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const message = `Thank you for loving me every single day. Every little thing you do, every kind gesture, makes me feel special and safe. I don’t always find the right words to tell you how much you mean to me, but I want you to know: your love lights up my life.
+No matter the hard days or the challenges we face, you always choose to stay by my side and support me. That makes me feel so lucky to have you. I promise to choose you too, to care for you, and to be there with you through everything, because nothing matters more to me than us.
+You are my joy, my peace, and my strength. Thank you for being you and for making me feel loved in a way I never imagined. I will always keep you in my heart and love you more every single day, Zachary.`;
+
+let i = 0;
+let opened = false;
+
+function type(){
+    if(i < message.length){
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(type, 28);
+    }
+}
+
+function changeImage(){
+    const img = document.getElementById("topImage");
+    if(img.src.includes("received_944139307982434.jpeg")){
+        img.src = "95be2a461518ca4762917bb7c70588fa.jpg";
+    } else {
+        img.src = "received_944139307982434.jpeg";
+    }
+}
+
+document.addEventListener("click", function(){
+    if(!opened){
+        opened = true;
+        document.getElementById("cover").style.display="none";
+        document.getElementById("main").style.display="block";
+        document.getElementById("music").play();
+        type();
+    }
+});
+</script>
+
+</body>
+</html>
